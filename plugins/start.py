@@ -121,8 +121,16 @@ async def start_command(client: Client, message: Message):
 
         elif verify_status['is_verified']:
             reply_markup = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("🤖 About Me", callback_data="about"),
-                  InlineKeyboardButton("🔒 Close", callback_data="close")]]
+            [          
+                [
+                    InlineKeyboardButton( "Main Channel", url = "t.me/InkaLinks" ),
+                    InlineKeyboardButton("Source Code", url = "https://t.me/+nrNgQ7sT3XQxZTc1")
+                ],
+                [
+                    InlineKeyboardButton("🤖 About Me", callback_data = "about"),
+                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                ]
+            ]
             )
             await message.reply_text(
                 text=START_MSG.format(
@@ -168,18 +176,17 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    buttons = [
+    buttons = [ 
         [
-            InlineKeyboardButton(
-                "Join Channel",
-                url = client.invitelink)
+            InlineKeyboardButton("Join Channel",url = client.invitelink),
+            InlineKeyboardButton("Join Channel",url = "https://t.me/+wyYRizWWncNmMmJk")
         ]
     ]
     try:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
+                    text = '♻️ Try Again ♻️',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
